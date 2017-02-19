@@ -1,0 +1,14 @@
+$(function () {
+	
+	
+	console.log('ok');
+	
+	
+	
+	
+	
+	
+	
+	
+	
+});
