@@ -1,7 +1,7 @@
 $(function () {
 	
 	
-	console.log('web js loaded: ok');
+	console.log('layout js loaded: ok');
 	
 	
 	
