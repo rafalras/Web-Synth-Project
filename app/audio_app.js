@@ -1,4 +1,6 @@
 $(function () {
+	
+	/*					SETTING MIDI CONNECTION 				*/
 	console.log('audio loaded: ok');
 	console.log('web js loaded: ok');
 	/* Check if browser supports MIDI acess*/
@@ -27,41 +29,38 @@ $(function () {
 		// Failed response
 		console.log("You have no access to Midi devices or your browser do not support MIDI" + e);
 	}
-	/*Setting oscilator frequency*/
-	function osc_frequency(note) {;
-		return 440 * Math.pow(2, (note - 69) / 12);
-	};
-	/*Audio variables*/ 
+	/*					AUDIO CREATION							*/
+	/*Audio variables*/
 	/*Setting AudioContext*/
 	var AudioContext = (window.AudioContext || window.webkitAudioContext);
 	var audioCtx = new AudioContext();
 	/*Setting oscilator*/
 	var oscillator = audioCtx.createOscillator();
-	oscillator.type = oscillator.frequency.value = osc_frequency();
+	oscillator.type = 'square';
+	oscillator.start();
+	/*Setting temporary/debugging connection to audio destination*/
+	var gainNode = audioCtx.createGain();
+	var finish = audioCtx.destination;
+	gainNode.gain.value = 0.5;
+	gainNode.connect(finish);
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	/*Setting oscilator frequency by events*/
+	function osc_frequency(note) {
+		var $frequency = 440 * Math.pow(2, ($temp - 69) / 12);
+		oscillator.frequency.value = $frequency;
+	};
+	/*Browser keyboard event*/
+	$('.set').find('li').on('mousedown', function () {
+		var $temp = 0;
+		$temp = $(this).data('note');
+		var $frequency = 440 * Math.pow(2, ($temp - 69) / 12);
+		oscillator.frequency.value = $frequency;
+		oscillator.connect(gainNode);
+		//console.log($frequency); Frequency check
+	});
+	$('.set').find('li').on('mouseup', function () {
+		oscillator.disconnect(gainNode);
+	});
 	/*Listening on MIDI device*/
 	function onMIDIMessage(message) {
 		data = message.data; // this gives us our [command/channel, note, velocity] data.
@@ -79,7 +78,4 @@ $(function () {
 		console.log("midi message: ", message); // Array of general MIDI data 
 		//console.log("MIDI message: ", data); // MIDI data [144, 63, 73], which contains 
 	};
-	
-	
-	
 });
