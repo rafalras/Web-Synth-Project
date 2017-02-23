@@ -36,12 +36,12 @@ body {
 	width: 1392px;
 	height: 393px;
 	border-radius: 3px;
-	background: -webkit-gradient(linear, right bottom, left top, color-stop(0%, rgba(0, 0, 0, 0.3)), color-stop(100%, rgba(0, 0, 0, 0))), url('http://f.cl.ly/items/2q1f3t0C3R1b0g081w3n/vwood.png');
+//	background: -webkit-gradient(linear, right bottom, left top, color-stop(0%, rgba(0, 0, 0, 0.3)), color-stop(100%, rgba(0, 0, 0, 0))), url('http://f.cl.ly/items/2q1f3t0C3R1b0g081w3n/vwood.png');
 	box-shadow: 0 0 50px rgba(0, 0, 0, 0.5) inset, 0 1px rgba(212, 152, 125, 0.2) inset, 0 5px 15px rgba(0, 0, 0, 0.5);
-	display: flex;
+	display: flex; 
 	position: relative;
 	padding: 15px;
-	color: white;
+	color: white; 
 }
 
 
@@ -50,11 +50,11 @@ body {
 	width: 25%;
 	.generator {
 		box-shadow: none;
-		height: 50%;
+		height: 20%;
 	}
-	.osc_env {
+	.visualisation { 
 		box-shadow: none;
-		height: 50%;
+		height: 80%;
 	}
 }
   
@@ -66,6 +66,9 @@ body {
 .effects {
 	@extend .module_border;
 	width: 40%;
+	div {
+		height: (100% / 3);
+	}
 }
 
 .amplifier {
@@ -80,6 +83,12 @@ body {
 		heigth: 30%;
 	}
 }
+//
+//.oscilloscope {
+//	width: 100%;
+//	height: 100%;
+//	z-index: -1;
+//}
 
 
 /*Keyboard layout*/
@@ -160,5 +169,19 @@ ul li:first-child {
 ul li:last-child {
 	border-radius: 0 0 5px 5px;
 }
-
+ 
 /*Sliders styling*/
+.rs-control .rs-range-color {
+    background-color: #967921; 
+	box-shadow: 0 0 50px rgba(0, 0, 0, 0.5) inset, 0 1px rgba(212, 152, 125, 0.2) inset, 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+.rs-control .rs-path-color {
+    background-color: white;
+}
+.rs-control .rs-handle:after {
+    background-color: #967921;
+	box-shadow: 0 0 50px rgba(0, 0, 0, 0.5) inset, 0 1px rgba(212, 152, 125, 0.2) inset, 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+.rs-control .rs-bg-color {
+    background-color: white;
+}
