@@ -1,5 +1,6 @@
 * {
 	box-sizing: border-box;
+	color:  darkslategrey;
 }
 
 %clearfix {
@@ -23,7 +24,7 @@ body {
 	background: white;
 }
 
-.keys {
+.keys { 
 	display: flex;
 	align-content: center;
 	width: auto;

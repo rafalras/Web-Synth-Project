@@ -32,6 +32,7 @@ $(function () {
 	/*					AUDIO CREATION							*/
 	/*Audio variables*/
 	var $transposition = 0;
+	var $filter_freq = 0;
 	$("input[name='basic_wave']").click(function (event) {
 		var $wave_type = 'sine;'
 		$wave_type = this.value;
@@ -83,15 +84,19 @@ $(function () {
 	/*Phaser effect */
 	var phaser = new tuna.Phaser({
 		rate: 0.5, //0.01 to 8 is a decent range, but higher values are possible
-		depth: 1, //0 to 1
+		depth: 0.3, //0 to 1
 		feedback: 0.8, //0 to 1+
 		stereoPhase: 30, //0 to 180
-		baseModulationFrequency: 700, //500 to 1500
+		baseModulationFrequency: 1000, //500 to 1500
 		bypass: 0
 	});
-	/*Connection between modules*/
+	
+	/*	Amplifier	*/
+	
 	var gainNode = audioCtx.createGain();
-	gainNode.gain.value = 0.7;
+	gainNode.gain.value = 0.5;
+	
+	/*	Connection between modules*/
 	var speakers = audioCtx.destination;
 	filter.connect(delay);
 	//reverb.connect(delay);
@@ -192,6 +197,37 @@ $(function () {
 		}
 //		
 	};
+	
+	
+	/*			POTENTIOMETERS */
+	
+		$("#slider").roundSlider({
+    sliderType: "min-range",
+    handleShape: "dot",
+    value: 0.065,
+    mouseScrollAction: true,
+    handleSize: "+10",
+    endAngle: "+300",
+    startAngle: 299,
+    width: 9,
+    radius: 40,
+	min: '0.002',
+	max: '1',
+	step: "0.001"
+//    drag: function (value) {
+//        $filter_freq = args.value;
+//			console.log($filter_freq);
+//    },
+//    change: function (args) {
+//        $filter_freq = args.value;
+//			console.log($filter_freq);
+//    }
+});
+	
+	
+	
+	
+	
 });
 /*BACKGROUND VISUALISATION*/
 //var analyser = audioContext.createAnalyser();
