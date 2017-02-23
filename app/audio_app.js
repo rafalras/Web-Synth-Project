@@ -63,45 +63,66 @@ $(function () {
 	});
 	/*hardware keyboard events*/
 	var $keys_array = ['q', '2', 'w', '3', 'e', 'r', '5', 't', '6', 'y', '7', 'u'];
-	function set_active_class(num) {
-		var $elements_arr = $('.set').find('li');
-		for (var $i = 0; $i < $elements_arr.length; $i++) {
-			if ($elements_arr[$i].data('note') === num && $elements_arr[$i].hasClass('white')) {
-				//				$elements_arr[$i].addClass;
-			}
-			else if ($elements_arr[$i].data('note') === num && $elements_arr[$i].hasClass('black')) {}
+
+	function set_active_class(key_id) {
+		var $temp_element = $('[data-key=' + key_id + ']');
+		if ($temp_element.hasClass('white')) {
+			$temp_element.addClass('white_active');
+		}
+		else {
+			$temp_element.addClass('black_active');
 		}
 	};
 
-	function remove_active_class() {};
+	function remove_active_class(key_id) {
+		var $temp_element = $('[data-key=' + key_id + ']');
+		$temp_element.removeClass('white_active').removeClass('black_active');
+	};
+	var kbd_counter = 0;
 	for (let $i = 0; $i < $keys_array.length; $i++) {
 		$(document).on('keydown', null, $keys_array[$i], function () {
-			var $temp_key_id = $('[data-key=' + $keys_array[$i] + ']').data('note');
-			//console.log($temp_key_id);
+			var $key_element = $('[data-key=' + $keys_array[$i] + ']');
+			if (!$key_element.hasClass('white_active') && !$key_element.hasClass('black_active')) {
+				kbd_counter++;
+			}
+			var $temp_key_id = $key_element.data('note');
 			osc_frequency($temp_key_id, $transposition);
-			console.log($('[data-key=' + $keys_array[$i] + ']').data('key'));
-			console.log($('[data-key=' + $keys_array[$i] + ']').data('note'));
+			console.log('counter: ', kbd_counter);
+			oscillator.connect(gainNode);
+			set_active_class($key_element.data('key'));
+			//			console.log('Button: ', $('[data-key=' + $keys_array[$i] + ']').data('key'));
+			//			console.log('MIDI id: ', $('[data-key=' + $keys_array[$i] + ']').data('note'));
 		});
 		$(document).on('keyup', null, $keys_array[$i], function () {
-			var $frequency = 0;
-			oscillator.frequency.value = $frequency;
-			//console.log('up');
+			kbd_counter--;
+			console.log('counter: ', kbd_counter);
+			if (kbd_counter == 0) {
+				oscillator.disconnect(gainNode);
+			}
+			//			var $frequency = 0;
+			//			oscillator.frequency.value = $frequency;
+			remove_active_class($('[data-key=' + $keys_array[$i] + ']').data('key'));
 		});
 	};
 	/*Listening MIDI devices*/
 	function onMIDIMessage(message) {
 		var data = message.data; // this gives us our [command/channel, note, velocity] data.
+		var midi_counter = 0;
 		switch (data[0]) {
 		case 144:
 			console.log("Note ON: ", data[0], "Note ID: ", data[1], "Velocity value: ", data[2]);
 			console.log(data);
 			osc_frequency(data[1]);
 			oscillator.connect(gainNode);
+			midi_counter++;
 			break;
 		case 128:
 			console.log(data);
 			console.log("NOte OFF: ", data[1]);
-			oscillator.disconnect(gainNode);
+			midi_counter--;
+			if (midi_counter == 0) {
+				oscillator.disconnect(gainNode);
+			}
 			break;
 		}
 		//		console.log("midi message: ", message); // Array of general MIDI data 
@@ -110,12 +131,9 @@ $(function () {
 });
 /*
 To do:
--Odpowiedni warunek an rozłaczenie oscylatora;
 -zrobienie menu wyboru urządzenia;
 -alert dla urządzeń poniżej danej rozdzielczości;
--(dodac klasy do nacisnietego klawisza)
--eventy na klawiatury komputerowe!
-- zrobić slidery;
+-zrobić slidery;
 -[wizualizacje w tle];
 
 
