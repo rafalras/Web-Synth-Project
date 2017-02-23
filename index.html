@@ -8,10 +8,26 @@
 	<script src="app/jquery-3.1.1.min.js"></script>
 	<script src="app/layout_app.js"></script>
 	<script src="app/audio_app.js"></script>
+	<script src="https://cdn.jsdelivr.net/jquery/1.11.3/jquery.min.js"></script>
+	<link href="https://cdn.jsdelivr.net/jquery.roundslider/1.3/roundslider.min.css" rel="stylesheet" />
+	<script src="https://cdn.jsdelivr.net/jquery.roundslider/1.3/roundslider.min.js"></script>
+	<script src="app/jquery.hotkeys.js"></script>
 </head>
 
 <body>
-	<div class="main_window"></div>
+	<div class="main_window">
+		<div class="oscillator">
+			<div class="generator"> OSCILLATOR </div>
+			<div id="slider"></div>
+			<div class="osc_env"> oscillator envelope </div>
+		</div>
+		<div class="filter"> FILTER</div>
+		<div class="effects"> EFFECTS</div>
+		<div class="amplifier">AMPLIFIER
+			<div class="amp_env">amplifier envelope</div>
+			<div class="transposition">transposition:</div>
+		</div>
+		<!--			<div class="visualization"></div>--></div>
 	<div class="keys">
 		<ul class="set">
 			<li class="white f" data-note="53"></li>
@@ -21,18 +37,18 @@
 			<li class="white a" data-note="57"></li>
 			<li class="black as" data-note="58"></li>
 			<li class="white b" data-note="59"></li>
-			<li class="white c" data-note="60"></li>
-			<li class="black cs" data-note="61"></li>
-			<li class="white d" data-note="62"></li>
-			<li class="black ds" data-note="63"></li>
-			<li class="white e" data-note="64"></li>
-			<li class="white f" data-note="65"></li>
-			<li class="black fs" data-note="66"></li>
-			<li class="white g" data-note="67"></li>
-			<li class="black gs" data-note="68"></li>
-			<li class="white a" data-note="69"></li>
-			<li class="black as" data-note="70"></li>
-			<li class="white b" data-note="71"></li>
+			<li class="white c" data-note="60" data-key="q"></li>
+			<li class="black cs" data-note="61" data-key="2"></li>
+			<li class="white d" data-note="62" data-key="w"></li>
+			<li class="black ds" data-note="63" data-key="3"></li>
+			<li class="white e" data-note="64" data-key="e"></li>
+			<li class="white f" data-note="65" data-key="r"></li>
+			<li class="black fs" data-note="66" data-key="5"></li>
+			<li class="white g" data-note="67" data-key="t"></li>
+			<li class="black gs" data-note="68" data-key="6"></li>
+			<li class="white a" data-note="69" data-key="y"></li>
+			<li class="black as" data-note="70" data-key="7"></li>
+			<li class="white b" data-note="71" data-key="u"></li>
 			<li class="white c" data-note="72"></li>
 			<li class="black cs" data-note="73"></li>
 			<li class="white d" data-note="74"></li>
