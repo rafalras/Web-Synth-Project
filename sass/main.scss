@@ -1,6 +1,5 @@
 * {
 	box-sizing: border-box;
-	color:  darkslategrey;
 }
 
 %clearfix {
@@ -10,6 +9,7 @@
 		clear: both;
 	}
 }
+
 .module_border {
 	-webkit-box-shadow: 0px 0px 13px 4px rgba(150, 121, 33, 1);
 	-moz-box-shadow: 0px 0px 13px 4px rgba(150, 121, 33, 1);
@@ -24,7 +24,7 @@ body {
 	background: white;
 }
 
-.keys { 
+.keys {
 	display: flex;
 	align-content: center;
 	width: auto;
@@ -37,28 +37,35 @@ body {
 	width: 1392px;
 	height: 393px;
 	border-radius: 3px;
-//	background: -webkit-gradient(linear, right bottom, left top, color-stop(0%, rgba(0, 0, 0, 0.3)), color-stop(100%, rgba(0, 0, 0, 0))), url('http://f.cl.ly/items/2q1f3t0C3R1b0g081w3n/vwood.png');
+	background: -webkit-gradient(linear, right bottom, left top, color-stop(0%, rgba(0, 0, 0, 0.3)), color-stop(100%, rgba(0, 0, 0, 0))), url('http://f.cl.ly/items/2q1f3t0C3R1b0g081w3n/vwood.png');
 	box-shadow: 0 0 50px rgba(0, 0, 0, 0.5) inset, 0 1px rgba(212, 152, 125, 0.2) inset, 0 5px 15px rgba(0, 0, 0, 0.5);
-	display: flex; 
+	display: flex;
 	position: relative;
 	padding: 15px;
-	color: white; 
+	color: white;
 }
-
 
 .oscillator {
 	@extend .module_border;
 	width: 25%;
 	.generator {
 		box-shadow: none;
-		height: 20%;
+		height: 40%;
+		border: 1px solid white;
+		.waves {
+			border: 1px solid white;
+		}
+		.waves1 {
+			border: 1px solid white;
+		}
 	}
-	.visualisation { 
+	.visualisation {
 		box-shadow: none;
-		height: 80%;
+		height: 50%;
+		border: 1px solid white;
 	}
 }
-  
+
 .filter {
 	@extend .module_border;
 	width: 15%;
@@ -69,6 +76,7 @@ body {
 	width: 40%;
 	div {
 		height: (100% / 3);
+		border: 1px solid black;
 	}
 }
 
@@ -84,6 +92,7 @@ body {
 		heigth: 30%;
 	}
 }
+
 //
 //.oscilloscope {
 //	width: 100%;
@@ -91,8 +100,8 @@ body {
 //	z-index: -1;
 //}
 
-
 /*Keyboard layout*/
+
 .set {
 	height: 18.875em;
 	width: 925px;
@@ -106,6 +115,7 @@ body {
 	box-shadow: 0 0 50px rgba(0, 0, 0, 0.5) inset, 0 1px rgba(212, 152, 125, 0.2) inset, 0 5px 15px rgba(0, 0, 0, 0.5);
 	//color: white;
 }
+
 li {
 	margin: 0;
 	padding: 0;
@@ -113,6 +123,7 @@ li {
 	position: relative;
 	float: left;
 }
+
 .white {
 	height: 16em;
 	width: 4em;
@@ -123,21 +134,24 @@ li {
 	box-shadow: -1px 0 0 rgba(255, 255, 255, 0.8) inset, 0 0 5px #ccc inset, 0 0 3px rgba(0, 0, 0, 0.2);
 	background: linear-gradient(45deg, #eee 0%, #fff 100%);
 }
+
 ul .white:active {
 	border-top: 1px solid #777;
 	border-left: 1px solid #999;
 	border-bottom: 1px solid #999;
 	box-shadow: 2px 0 3px rgba(0, 0, 0, 0.1) inset, -5px 5px 20px rgba(0, 0, 0, 0.2) inset, 0 0 3px rgba(0, 0, 0, 0.2);
-		background: linear-gradient(top, rgba(255, 255, 0, 0.8) 50%, rgba(255, 255, 0, 0.8) 100%);
+	background: linear-gradient(top, rgba(255, 255, 0, 0.8) 50%, rgba(255, 255, 0, 0.8) 100%);
 }
+
 .white_active {
 	border-top: 1px solid #777;
 	border-left: 1px solid #999;
 	border-bottom: 1px solid #999;
 	box-shadow: -1px -1px 2px rgba(255, 255, 0, 0.8) inset, 0 -2px 2px 3px rgba(0, 0, 0, 0.6) inset, 0 1px 2px rgba(0, 0, 0, 0.5);
-//	box-shadow: 2px 0 3px rgba(0, 0, 0, 0.1) inset, -5px 5px 20px rgba(0, 0, 0, 0.2) inset, 0 0 3px rgba(0, 0, 0, 0.2);
+	//	box-shadow: 2px 0 3px rgba(0, 0, 0, 0.1) inset, -5px 5px 20px rgba(0, 0, 0, 0.2) inset, 0 0 3px rgba(0, 0, 0, 0.2);
 	background: linear-gradient(top, rgba(255, 255, 0, 0.8) 50%, rgba(255, 255, 0, 0.8) 100%);
 }
+
 .black {
 	height: 8em;
 	width: 2em;
@@ -148,14 +162,17 @@ ul .white:active {
 	box-shadow: -1px -1px 2px rgba(255, 255, 255, 0.2) inset, 0 -5px 2px 3px rgba(0, 0, 0, 0.6) inset, 0 2px 4px rgba(0, 0, 0, 0.5);
 	background: linear-gradient(45deg, #222 0%, #555 100%);
 }
-.black:active { 
+
+.black:active {
 	box-shadow: -1px -1px 2px rgba(255, 255, 0, 0.8) inset, 0 -2px 2px 3px rgba(0, 0, 0, 0.6) inset, 0 1px 2px rgba(0, 0, 0, 0.5);
 	background: linear-gradient(left, #444 20%, #666 100%);
 }
+
 .black_active {
 	box-shadow: -1px -1px 2px rgba(255, 255, 0, 0.8) inset, 0 -2px 2px 3px rgba(0, 0, 0, 0.6) inset, 0 1px 2px rgba(0, 0, 0, 0.5);
 	background: linear-gradient(left, #444 20%, #666 100%);
 }
+
 .g,
 .a,
 .b,
@@ -164,25 +181,32 @@ ul .white:active {
 {
 	margin: 0 0 0 -1em;
 }
+
 ul li:first-child {
 	border-radius: 0 0 5px 5px;
 }
+
 ul li:last-child {
 	border-radius: 0 0 5px 5px;
 }
- 
+
+
 /*Sliders styling*/
+
 .rs-control .rs-range-color {
-    background-color: #967921; 
+	background-color: #967921;
 	box-shadow: 0 0 50px rgba(0, 0, 0, 0.5) inset, 0 1px rgba(212, 152, 125, 0.2) inset, 0 5px 15px rgba(0, 0, 0, 0.5);
 }
+
 .rs-control .rs-path-color {
-    background-color: white;
+	background-color: white;
 }
+
 .rs-control .rs-handle:after {
-    background-color: #967921;
+	background-color: #967921;
 	box-shadow: 0 0 50px rgba(0, 0, 0, 0.5) inset, 0 1px rgba(212, 152, 125, 0.2) inset, 0 5px 15px rgba(0, 0, 0, 0.5);
 }
+
 .rs-control .rs-bg-color {
-    background-color: white;
+	background-color: white;
 }

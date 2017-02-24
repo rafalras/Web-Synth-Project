@@ -6,7 +6,7 @@
 	<title>Web Midi Synth</title>
 	<link rel="stylesheet" href="style/main.css">
 	<script src="app/jquery-3.1.1.min.js"></script>
-<!--	<script src="https://cdn.jsdelivr.net/jquery/1.11.3/jquery.min.js"></script>-->
+	<!--	<script src="https://cdn.jsdelivr.net/jquery/1.11.3/jquery.min.js"></script>-->
 	<link href="https://cdn.jsdelivr.net/jquery.roundslider/1.3/roundslider.min.css" rel="stylesheet" />
 	<script src="https://cdn.jsdelivr.net/jquery.roundslider/1.3/roundslider.min.js"></script>
 	<script src="app/layout_app.js"></script>
@@ -20,26 +20,54 @@
 	<div class="main_window">
 		<div class="oscillator">
 			<div class="generator"> OSCILLATOR
-				<div id="slider"></div>
+				<!--				<div id="slider"></div>-->
 				<form class="waves">
-					<input type="radio" name="basic_wave" value="sine" checked>Sine
+					<input type="radio" name="basic_wave" value="sine">Sine
 					<input type="radio" name="basic_wave" value="square">Square
-					<input type="radio" name="basic_wave" value="sawtooth">sawtooth
+					<input type="radio" name="basic_wave" value="sawtooth" checked>sawtooth
 					<input type="radio" name="basic_wave" value="triangle">Triangle </form>
 			</div>
+			<form class="waves1">
+				<input type="radio" name="basic_wave1" value="sine">Sine
+				<input type="radio" name="basic_wave1" value="square">Square
+				<input type="radio" name="basic_wave1" value="sawtooth">sawtooth
+				<input type="radio" name="basic_wave1" value="triangle" checked>Triangle </form>
 			<div class="osc_env"> Visalisation </div>
 		</div>
-		<div class="filter"> FILTER</div>
+		<div class="filter">
+		<form> Filter Cut off [Hz] <input id="filter_freq" type="range" name="points" min="0.01" max="1" value="0.8" step="0.001"><span id="cut_off">0.8</span> </form>
+		<form>Filter Resonance
+		<input id="filter_reso" type="range" name="points" min="1" max="4" value="3.5" step="0.1"><span id="resonance">0.8</span> </form>
+		</div>
 		<div class="effects">
-			<div class="reverb">REV</div>
-			<div class="delay">DEL</div>
-			<div class="lo-fi">PHASe</div>
+			<div class="reverb">REVERB
+				<form>Reverb wet level<input id="rev_wet_lev" type="range" name="points" min="0" max="1" value="1" step="0.01"><span id="reverb_wet_lev">1</span> </form>
+				<form>Rev low-cut [Hz] <input id="rev_low_cut" type="range" name="points" min="40" max="2000" value="150" step="1"><span id="rev_filter">150</span> </form>
+			
+			</div>
+			<div class="delay">DELAY
+			<form>Delay time [ms] <input id="delay_time" type="range" name="points" min="1" max="1000" value="150" step="1"><span id="del_time">150</span> </form>
+			<form>Delay feedback<input id="delay_feedback" type="range" name="points" min="0.00" max="0.8" value="0.2" step="0.01"><span id="del_feedback">0.8</span> </form>
+			
+			
+			</div>
+			<div class="phase">PHASER
+				<br>
+				<form id='phaze_slider'> Phaser rate:
+					<input id="phaser_speed" type="range" name="points" min="0.1" max="8" value="0.3" step="0.1"><span id="phase_rate">0.3</span> </form>
+				<form> Phaser depth:
+					<input id="phaser_depth" type="range" name="points" min="0" max="1" value="0.3" step="0.01"><span id="phase_dep">0.3</span> </form>
+			</div>
 		</div>
 		<div class="amplifier">AMPLIFIER
-			<div class="amp_env">amplifier envelope</div>
+			<div class="amp_env">amplifier gain
+				<input id="amp_gain" type="range" name="points" min="0.1" max="0.8" value="0.3" step="0.01"><span id="volume">0.3</span> </form>
+			</div>
 			<div class="transposition">transposition: <span id='oct_up'>+</span><span id='counter'></span><span id='oct_down'></span> </div>
 		</div>
-		<!--			<div class="visualization"></div>--></div>
+	</div>
+	</div>
+	<!--			<div class="visualization"></div>--></div>
 	<div class="keys">
 		<ul class="set">
 			<li class="white f" data-note="53"></li>
